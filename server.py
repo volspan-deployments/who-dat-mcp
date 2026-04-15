@@ -1,7 +1,7 @@
+import uvicorn
 from starlette.applications import Starlette
 from starlette.routing import Route, Mount
 from starlette.responses import JSONResponse
-import uvicorn
 from fastmcp import FastMCP
 import httpx
 import os
@@ -80,9 +80,6 @@ async def health_check() -> dict:
             return {"status": "unreachable", "error": str(e)}
         except Exception as e:
             return {"status": "error", "error": str(e)}
-
-
-
 
 async def health(request):
     return JSONResponse({"status": "ok", "server": mcp.name})
